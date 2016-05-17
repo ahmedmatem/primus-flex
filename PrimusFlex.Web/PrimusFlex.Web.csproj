@@ -174,7 +174,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -245,6 +244,16 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\data\PrimusFlex.Data.Models\PrimusFlex.Data.Models.csproj">
+      <Project>{e98b6738-73fb-492e-8cd2-6a374f0e0cbe}</Project>
+      <Name>PrimusFlex.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\data\PrimusFlex.Data\PrimusFlex.Data.csproj">
+      <Project>{2fa4745d-85cb-4559-b2ab-d9ad92ccf3f7}</Project>
+      <Name>PrimusFlex.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

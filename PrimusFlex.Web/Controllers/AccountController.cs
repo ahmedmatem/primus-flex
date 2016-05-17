@@ -1,17 +1,20 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using PrimusFlex.Web.Models;
-
-namespace PrimusFlex.Web.Controllers
+﻿namespace PrimusFlex.Web.Controllers
 {
+    using System;
+    using System.Globalization;
+    using System.Linq;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Mvc;
+
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+
+    using PrimusFlex.Web.Models;
+    using PrimusFlex.Data.Models;
+
     [Authorize]
     public class AccountController : Controller
     {
