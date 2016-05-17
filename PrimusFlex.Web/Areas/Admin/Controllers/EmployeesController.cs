@@ -66,6 +66,8 @@
 
             if (result.Succeeded)
             {
+                this.UserManager.AddToRole(user.Id, "Employee");
+
                 var newEmployee = this.Mapper.Map<Employee>(model);
                 newEmployee.UserId = user.Id;
 
