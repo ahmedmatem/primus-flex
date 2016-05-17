@@ -9,8 +9,9 @@ namespace PrimusFlex.Data.Migrations
     {
         public Configuration()
         {
-            this.AutomaticMigrationsEnabled = false;
-            this.AutomaticMigrationDataLossAllowed = false;
+            // TODO: Set following properties false in release mode
+            this.AutomaticMigrationsEnabled = true;
+            this.AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(PrimusFlex.Data.ApplicationDbContext context)
