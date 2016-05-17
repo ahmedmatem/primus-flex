@@ -246,6 +246,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\data\PrimusFlex.Data.Common\PrimusFlex.Data.Common.csproj">
+      <Project>{71a7af99-9945-4dca-83de-b33a97d02071}</Project>
+      <Name>PrimusFlex.Data.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\data\PrimusFlex.Data.Models\PrimusFlex.Data.Models.csproj">
       <Project>{e98b6738-73fb-492e-8cd2-6a374f0e0cbe}</Project>
       <Name>PrimusFlex.Data.Models</Name>
