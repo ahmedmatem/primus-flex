@@ -20,6 +20,8 @@
 
         public IDbSet<Employee> Employees { get; set; }
 
+        public IDbSet<Site> Sites { get; set; }
+
 
         public static ApplicationDbContext Create()
         {

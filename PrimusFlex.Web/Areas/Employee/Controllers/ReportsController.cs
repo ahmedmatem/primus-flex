@@ -62,7 +62,8 @@
 
             var model = new WorkReportViewModel()
             {
-                EmployeeId = employee.Id
+                EmployeeId = employee.Id,
+                Date = DateTime.Now
             };
 
             return this.View(model);
