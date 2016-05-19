@@ -8,6 +8,7 @@
 
     using Web.Controllers;
 
+    [Authorize(Roles = "Admin")]
     public class SitesController : BaseController
     {
         // GET: Admin/Sites

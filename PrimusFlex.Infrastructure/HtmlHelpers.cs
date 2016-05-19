@@ -16,8 +16,8 @@
                 viewContext = html.ViewContext.ParentActionViewContext;
 
             RouteValueDictionary routeValues = viewContext.RouteData.Values;
-            string currentAction = routeValues["action"].ToString();
-            string currentController = routeValues["controller"].ToString();
+            string currentAction = routeValues["action"].ToString().ToLower();
+            string currentController = routeValues["controller"].ToString().ToLower();
 
             if (String.IsNullOrEmpty(actions))
                 actions = currentAction;
