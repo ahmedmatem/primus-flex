@@ -181,11 +181,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\SitesController.cs" />
     <Compile Include="Areas\Admin\ViewModels\Employees\EmployeeInfoViewModel.cs" />
     <Compile Include="Areas\Admin\Controllers\EmployeesController.cs" />
     <Compile Include="Areas\Admin\ViewModels\Employees\CreateEmployeeViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Employees\EmployeeViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Employees\UpdateEmployeeViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Sites\SiteViewModel.cs" />
     <Compile Include="Areas\Employee\Controllers\ReportsController.cs" />
     <Compile Include="Areas\Employee\EmployeeAreaRegistration.cs" />
     <Compile Include="Areas\Employee\Models\WeekSummury.cs" />
@@ -236,6 +238,7 @@
     <Content Include="Areas\Employee\Views\Reports\Index.cshtml" />
     <Content Include="Areas\Employee\Views\Reports\Create.cshtml" />
     <Content Include="Areas\Employee\Views\Reports\Update.cshtml" />
+    <Content Include="Areas\Admin\Views\Sites\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

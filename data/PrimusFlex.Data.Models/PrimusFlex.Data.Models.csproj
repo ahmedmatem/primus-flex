@@ -60,6 +60,7 @@
     <Compile Include="ApplicationUser.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site.cs" />
     <Compile Include="Types\BankName.cs" />
     <Compile Include="Types\Group.cs" />
     <Compile Include="Types\KitchenName.cs" />
