@@ -11,6 +11,7 @@
         public Employee()
         {
             this.WorkReports = new HashSet<WorkReport>();
+            this.MissingItems = new HashSet<MissingItem>();
         }
 
         public string UserId { get; set; }
@@ -25,8 +26,12 @@
 
         public string Account { get; set; }
 
+        // Navigation properties
+
         public virtual ApplicationUser User { get; set; }
 
         public virtual ICollection<WorkReport> WorkReports { get; set; }
+
+        public virtual ICollection<MissingItem> MissingItems { get; set; }
     }
 }

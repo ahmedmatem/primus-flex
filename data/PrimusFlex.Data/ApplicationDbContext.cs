@@ -20,6 +20,11 @@
 
         public IDbSet<Employee> Employees { get; set; }
 
+        public IDbSet<ConstructionSite> ConstructionSites { get; set; }
+
+        public IDbSet<MissingItem> MissingItems { get; set; }
+
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

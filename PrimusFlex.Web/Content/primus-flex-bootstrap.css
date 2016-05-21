@@ -50,3 +50,7 @@ fieldset[disabled] .btn-hot.active {
 #emailInput {
     border-radius: 0;
 }
+
+.panel {
+    border-radius: 0;
+}
