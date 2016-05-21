@@ -187,7 +187,6 @@
     <Compile Include="Areas\Admin\ViewModels\Employees\CreateEmployeeViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Employees\EmployeeViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Employees\UpdateEmployeeViewModel.cs" />
-    <Compile Include="Areas\Admin\ViewModels\Sites\SiteViewModel.cs" />
     <Compile Include="Areas\Employee\Controllers\ReportsController.cs" />
     <Compile Include="Areas\Employee\EmployeeAreaRegistration.cs" />
     <Compile Include="Areas\Employee\Models\WeekSummury.cs" />
@@ -294,6 +293,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Employee\Views\Shared\" />
+    <Folder Include="ViewModels\ConstructionSite\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -2,9 +2,12 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+    using System.Collections.Generic;
+    using System.Web.Mvc;
 
     using Data.Models;
     using Data.Models.Types;
+
     using Infrastructure.Mapping;
 
     public class WorkReportViewModel : IMapFrom<WorkReport>, IMapTo<WorkReport>

@@ -1,6 +1,7 @@
 ﻿namespace PrimusFlex.Data.Models
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
 
     using Common.Models;
     using Types;
@@ -9,10 +10,13 @@
     {
         public int EmployeeId { get; set; }
 
+        public int SiteId { get; set; }
+
         public DateTime Date { get; set; }
 
         public int WeekNumber { get; set; }
 
+        [Display(Name = "Post Code")]
         public string PostCode { get; set; }
 
         public string Address { get; set; }
