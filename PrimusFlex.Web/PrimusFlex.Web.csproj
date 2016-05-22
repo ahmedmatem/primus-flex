@@ -241,6 +241,7 @@
     <Content Include="Areas\Admin\Views\Sites\Index.cshtml" />
     <Content Include="Areas\Employee\Views\Missings\Index.cshtml" />
     <Content Include="Areas\Employee\Views\Reports\CreateWithNewSite.cshtml" />
+    <Content Include="Areas\Employee\Views\Reports\UpdateWithNewSite.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

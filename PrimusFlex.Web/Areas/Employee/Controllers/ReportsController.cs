@@ -87,24 +87,7 @@
                 Date = DateTime.Now
             };
 
-            List<SelectListItem> postCodes = new List<SelectListItem>();
-            List<SelectListItem> adresses = new List<SelectListItem>();
-            var constructionSites = this.constructionSites.All().ToList();
-            foreach (var cs in constructionSites)
-            {
-                postCodes.Add(new SelectListItem()
-                {
-                    Text = cs.PostCode,
-                    Value = cs.Id.ToString()
-                });
-                adresses.Add(new SelectListItem()
-                {
-                    Text = cs.Address,
-                    Value = cs.Id.ToString()
-                });
-            }
-            ViewBag.PostCodes = postCodes.OrderBy(x => x.Text);
-            ViewBag.Addresses = adresses.OrderBy(x => x.Text);     
+            SetConstructionSiteDropDownLists();
 
             return this.View(model);
         }
@@ -121,26 +104,21 @@
 
             var report = this.Mapper.Map<WorkReport>(model);
             report.WeekNumber = DateTimeHelper.GetIso8601WeekOfYear(model.Date);
-
-
-            var constructionSite = new ConstructionSite();
+            
             int siteId = 0;
-            if (int.TryParse(model.PostCode, out siteId))
-            {
-                constructionSite = this.constructionSites.GetById(siteId);
-            }
-            else
+            if (!int.TryParse(model.PostCode, out siteId))
             {
                 // Site not exist. Create new site.
-                constructionSite = new ConstructionSite()
+                var constructionSite = new ConstructionSite()
                 {
                     PostCode = model.PostCode,
                     Address = model.Address
                 };
                 this.constructionSites.Add(constructionSite);
+                siteId = constructionSite.Id;
             }
 
-            report.ConstructionSiteId = constructionSite.Id;
+            report.ConstructionSiteId = siteId;
 
             this.workReports.Add(report);
             this.workReports.Save();
@@ -151,6 +129,21 @@
         // GET: Employee/Reports/Update/Id
         [HttpGet]
         public ActionResult Update(int id)
+        {
+            var report = this.workReports.GetById(id);
+
+            var model = this.Mapper.Map<WorkReportViewModel>(report);
+
+            var constructionSite = this.constructionSites.GetById(report.ConstructionSiteId);
+
+            SetConstructionSiteDropDownLists(constructionSite.PostCode, constructionSite.Address);
+            
+            return this.View(model);
+        }
+
+        // GET: Employee/Reports/UpdateWithNewSite/Id
+        [HttpGet]
+        public ActionResult UpdateWithNewSite(int id)
         {
             var report = this.workReports.GetById(id);
 
@@ -171,8 +164,6 @@
 
             var report = this.workReports.GetById(model.Id);
             report.Date = model.Date;
-            //report.PostCode = model.PostCode;
-            //report.Address = model.Address;
             report.KitchenName = model.KitchenName;
             report.Plot = model.Plot;
             report.WorkType = model.WorkType;
@@ -180,10 +171,65 @@
             report.Note = model.Note;
             report.WeekNumber = DateTimeHelper.GetIso8601WeekOfYear(model.Date);
 
+            int siteId = 0;
+            if (!int.TryParse(model.PostCode, out siteId))
+            {
+                // Site not exist. Create new site.
+                var constructionSite = new ConstructionSite()
+                {
+                    PostCode = model.PostCode,
+                    Address = model.Address
+                };
+                this.constructionSites.Add(constructionSite);
+                siteId = constructionSite.Id;
+            }
+
+            report.ConstructionSiteId = siteId;
+
             this.workReports.Update(report);
             this.workReports.Save();
 
             return RedirectToAction("Index");
+        }
+
+        private void SetConstructionSiteDropDownLists(string postCode = null, string address = null)
+        {
+            List<SelectListItem> postCodes = new List<SelectListItem>();
+            List<SelectListItem> addresses = new List<SelectListItem>();
+            var constructionSites = this.constructionSites.All().ToList();
+            foreach (var cs in constructionSites)
+            {
+                postCodes.Add(new SelectListItem()
+                {
+                    Text = cs.PostCode,
+                    Value = cs.Id.ToString()
+                });
+                addresses.Add(new SelectListItem()
+                {
+                    Text = cs.Address,
+                    Value = cs.Id.ToString()
+                });
+            }
+
+            foreach (var pc in postCodes)
+            {
+                if (pc.Text == postCode)
+                {
+                    pc.Selected = true;
+                    break;
+                }
+            }
+            foreach (var a in addresses)
+            {
+                if (a.Text == postCode)
+                {
+                    a.Selected = true;
+                    break;
+                }
+            }
+
+            ViewBag.PostCodes = postCodes.OrderBy(x => x.Text);
+            ViewBag.Addresses = addresses.OrderBy(x => x.Text);
         }
     }
 }
