@@ -14,6 +14,7 @@
         public ConstructionSite()
         {
             this.WorkReports = new HashSet<WorkReport>();
+            this.MissingItems = new HashSet<MissingItem>();
         }
         
         public string PostCode { get; set; }
@@ -23,5 +24,7 @@
         // Navigation properties
 
         public virtual ICollection<WorkReport> WorkReports { get; set; }
+
+        public ICollection<MissingItem> MissingItems { get; set; }
     }
 }

@@ -191,7 +191,8 @@
     <Compile Include="Areas\Employee\Controllers\ReportsController.cs" />
     <Compile Include="Areas\Employee\EmployeeAreaRegistration.cs" />
     <Compile Include="Areas\Employee\Models\WeekSummury.cs" />
-    <Compile Include="Areas\Employee\ViewModels\WorkReportViewModel.cs" />
+    <Compile Include="Areas\Employee\ViewModels\Missings\MissingItemViewModel.cs" />
+    <Compile Include="Areas\Employee\ViewModels\Reports\WorkReportViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -242,6 +243,7 @@
     <Content Include="Areas\Employee\Views\Missings\Index.cshtml" />
     <Content Include="Areas\Employee\Views\Reports\CreateWithNewSite.cshtml" />
     <Content Include="Areas\Employee\Views\Reports\UpdateWithNewSite.cshtml" />
+    <Content Include="Areas\Employee\Views\Missings\Register.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

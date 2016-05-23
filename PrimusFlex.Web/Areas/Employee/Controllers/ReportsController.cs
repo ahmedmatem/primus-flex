@@ -15,7 +15,7 @@
     using Models;
     using Data.Common;
     using Data.Models;
-
+    using Infrastructure.Data.Helpers;
     [Authorize(Roles = "Employee")]
     public class ReportsController : BaseController
     {
@@ -87,7 +87,8 @@
                 Date = DateTime.Now
             };
 
-            SetConstructionSiteDropDownLists();
+            ViewBag.PostCodes = ConstructionSites.SetDropDownListsFrom("PostCodes");
+            ViewBag.Addresses = ConstructionSites.SetDropDownListsFrom("Addresses");
 
             return this.View(model);
         }
@@ -135,9 +136,10 @@
             var model = this.Mapper.Map<WorkReportViewModel>(report);
 
             var constructionSite = this.constructionSites.GetById(report.ConstructionSiteId);
-
-            SetConstructionSiteDropDownLists(constructionSite.PostCode, constructionSite.Address);
             
+            ViewBag.PostCodes = ConstructionSites.SetDropDownListsFrom("PostCodes", constructionSite.PostCode);
+            ViewBag.Addresses = ConstructionSites.SetDropDownListsFrom("Addresses", constructionSite.Address);
+
             return this.View(model);
         }
 
@@ -192,44 +194,6 @@
             return RedirectToAction("Index");
         }
 
-        private void SetConstructionSiteDropDownLists(string postCode = null, string address = null)
-        {
-            List<SelectListItem> postCodes = new List<SelectListItem>();
-            List<SelectListItem> addresses = new List<SelectListItem>();
-            var constructionSites = this.constructionSites.All().ToList();
-            foreach (var cs in constructionSites)
-            {
-                postCodes.Add(new SelectListItem()
-                {
-                    Text = cs.PostCode,
-                    Value = cs.Id.ToString()
-                });
-                addresses.Add(new SelectListItem()
-                {
-                    Text = cs.Address,
-                    Value = cs.Id.ToString()
-                });
-            }
-
-            foreach (var pc in postCodes)
-            {
-                if (pc.Text == postCode)
-                {
-                    pc.Selected = true;
-                    break;
-                }
-            }
-            foreach (var a in addresses)
-            {
-                if (a.Text == postCode)
-                {
-                    a.Selected = true;
-                    break;
-                }
-            }
-
-            ViewBag.PostCodes = postCodes.OrderBy(x => x.Text);
-            ViewBag.Addresses = addresses.OrderBy(x => x.Text);
-        }
+        // TODO: Create Delete work report Action
     }
 }

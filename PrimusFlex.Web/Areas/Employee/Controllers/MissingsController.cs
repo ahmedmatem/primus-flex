@@ -1,5 +1,6 @@
 ﻿namespace PrimusFlex.Web.Areas.Employee.Controllers
 {
+    using Infrastructure.Data.Helpers;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -15,6 +16,16 @@
         public ActionResult Index()
         {
             return View();
+        }
+
+        // GET: Employee/Missings/Register
+        [HttpGet]
+        public ActionResult Register()
+        {
+            ViewBag.PostCodes = ConstructionSites.SetDropDownListsFrom("PostCodes");
+            ViewBag.Addresses = ConstructionSites.SetDropDownListsFrom("Addresses");
+
+            return this.View();
         }
     }
 }

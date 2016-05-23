@@ -1,0 +1,115 @@
+﻿@model PrimusFlex.Web.Areas.Employee.ViewModels.MissingItemViewModel
+
+@{
+    ViewBag.Title = "Register Missing Item";
+}
+
+<div class="nav-path">
+    <a href="@Url.Content("~/Employee/Missings")">Missings</a> / Register a missing item
+</div>
+
+@using (Html.BeginForm("Register", "Missings", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.EmployeeId)
+
+    <div class="form-group required">
+        @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group required">
+        @Html.LabelFor(m => m.Count, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Count, new { @class = "form-control", type = "number" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Width, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Width, new { @class = "form-control", type = "number" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Height, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Height, new { @class = "form-control", type = "number" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Color, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Color, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <hr />
+    <div class="col-md-offset-2 col-md-10">
+        <strong>Site details</strong>
+        <a href="@Url.Content("~/Employee/Reports/CreateWithNewSite")" class="btn btn-default btn-xs pull-right"><i class="fa fa-plus"></i> New site</a>
+    </div>
+    <div class="form-group required">
+        @Html.LabelFor(m => m.PostCode, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.PostCode, new SelectList(ViewBag.PostCodes, "Value", "Text"), "Select post code", new { @class = "form-control", data_site = "PostCode" })
+            @Html.ValidationMessageFor(m => m.PostCode, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group required">
+        @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.Address, new SelectList(ViewBag.Addresses, "Value", "Text"), "Select address", new { @class = "form-control", data_site = "Address" })
+            @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <hr />
+
+    <div class="form-group required">
+        @Html.LabelFor(m => m.Plot, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Plot, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group required">
+        @Html.LabelFor(m => m.KitchenName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.EnumDropDownListFor(m => m.KitchenName, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Reason, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.Reason, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Create" />
+            <a href="@Url.Content("~/Employee/Missings")" class="btn btn-default">Cancel</a>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(function () {
+            $("select[data-site]").change(function () {
+                var id = $(this).val();
+                $("select[data-site]").each(function () {
+                    $(this).val(id);
+                });
+            });
+        });
+    </script>
+}
