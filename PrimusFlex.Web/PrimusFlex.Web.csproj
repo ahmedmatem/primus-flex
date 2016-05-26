@@ -244,6 +244,7 @@
     <Content Include="Areas\Employee\Views\Reports\CreateWithNewSite.cshtml" />
     <Content Include="Areas\Employee\Views\Reports\UpdateWithNewSite.cshtml" />
     <Content Include="Areas\Employee\Views\Missings\Register.cshtml" />
+    <Content Include="Areas\Employee\Views\Missings\RegisterWithNewSite.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

@@ -1,17 +1,19 @@
 ﻿namespace PrimusFlex.Web.Areas.Employee.ViewModels
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
 
     using Data.Models;
     using Infrastructure.Mapping;
     using Data.Models.Types;
+    using AutoMapper;
 
-    public class MissingItemViewModel : IMapFrom<MissingItem>, IMapTo<MissingItem>
+    public class MissingItemViewModel : IMapFrom<MissingItem>, IMapTo<MissingItem>, IHaveCustomMappings
     {
-        [Required]
-        public int EmployeeId { get; set; }
+        public int Id { get; set; }
 
-        [Required]
+        public int EmployeeId { get; set; }
+        
         public int ConstructionSiteId { get; set; }
 
         [Required]
@@ -40,5 +42,22 @@
         public KitchenName KitchenName { get; set; }
 
         public string Reason { get; set; }
+
+        public int WeekNumber { get; set; }
+        
+        public DateTime Date { get; set; }
+
+
+        public void CreateMappings(IMapperConfiguration configuration)
+        {
+            configuration.CreateMap<MissingItem, MissingItemViewModel>()
+                .ForMember(x => x.Date, opt => opt.MapFrom(x => x.CreatedOn));
+
+            configuration.CreateMap<MissingItem, MissingItemViewModel>()
+                .ForMember(x => x.PostCode, opt => opt.MapFrom(x => x.ConstructionSite.PostCode));
+
+            configuration.CreateMap<MissingItem, MissingItemViewModel>()
+                .ForMember(x => x.Address, opt => opt.MapFrom(x => x.ConstructionSite.Address));
+        }
     }
 }

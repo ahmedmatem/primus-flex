@@ -52,19 +52,19 @@
     <hr />
     <div class="col-md-offset-2 col-md-10">
         <strong>Site details</strong>
-        <a href="@Url.Content("~/Employee/Missings/RegisterWithNewSite")" class="btn btn-default btn-xs pull-right"><i class="fa fa-plus"></i> New site</a>
+        <a href="@Url.Content("~/Employee/Missings/Register")" class="btn btn-default btn-xs pull-right"><i class="fa fa-plus"></i> Select from existing sites</a>
     </div>
     <div class="form-group required">
         @Html.LabelFor(m => m.PostCode, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.DropDownListFor(m => m.PostCode, new SelectList(ViewBag.PostCodes, "Value", "Text"), "Select post code", new { @class = "form-control", data_site = "PostCode" })
+            @Html.TextBoxFor(m => m.PostCode, new { @class = "form-control", data_site = "PostCode" })
             @Html.ValidationMessageFor(m => m.PostCode, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group required">
         @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.DropDownListFor(m => m.Address, new SelectList(ViewBag.Addresses, "Value", "Text"), "Select address", new { @class = "form-control", data_site = "Address" })
+            @Html.TextBoxFor(m => m.Address, new { @class = "form-control", data_site = "Address" })
             @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
         </div>
     </div>
