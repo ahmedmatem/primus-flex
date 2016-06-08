@@ -1,32 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
-using System.Web.Mvc;
 
-namespace PrimusFlex.Web.Controllers
+namespace PrimusFlex.Web.Services
 {
-    public class ValuesController : ApiController
+    public class LoginController : ApiController
     {
-        // GET api/values
+        // GET api/login
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
+        // GET api/login/5
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/values
+        // POST api/login
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT api/values/5
+        // PUT api/login/5
         public void Put(int id, [FromBody]string value)
         {
         }
