@@ -5,6 +5,7 @@
     using System.Web.Routing;
     using System.Data.Entity;
     using System.Reflection;
+    using System.Web.Http;
 
     using Data;
     using Data.Migrations;
@@ -20,6 +21,7 @@
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
 
             AutofacConfig.RegisterAutofac();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
